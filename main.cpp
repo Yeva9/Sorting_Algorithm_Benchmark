@@ -13,14 +13,16 @@ void TestsCall(int argc, char* argv[]) {
 	int size = atoi(argv[1]);
 	int tests_count = atoi(argv[2]);	
 	int* array = RandomArrayGenerator(size);
-	std::string function_name[] = { "BubbleSort   ", "InsertionSort", "SelectionSort",
-								    "ShellSort    ", "HeapSort     ", "STLQuickSort ",
-								    "QuickSort    ", "MergeSort    " };
-
-	f_t1 array_of_sorts1[]={ BubbleSort, InsertionSort, SelectionSort,
-							ShellSort, HeapSort, STLQuickSort };
 	
+	std::string function_name[] = { "BubbleSort   ", "InsertionSort", "SelectionSort",
+	"ShellSort    ", "HeapSort     ", "STLQuickSort ", "QuickSort    ", "MergeSort    " };
+	f_t1 array_of_sorts1[]={ BubbleSort, InsertionSort, SelectionSort,
+							ShellSort, HeapSort, STLQuickSort };	
 	f_t2 array_of_sorts2[] = { QuickSort , MergeSort }; 
+
+	if (2 <= tests_count) {
+		PrintDesign();	
+	}
 
 	for (int i = 0, j = 0; i < 8; ++i) {
 		if (i < 6) {	
@@ -32,6 +34,7 @@ void TestsCall(int argc, char* argv[]) {
 			++j;
 		}
 	}
+	delete[] array;
 }
 
 int main(int argc, char* argv[])
