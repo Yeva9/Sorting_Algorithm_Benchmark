@@ -9,6 +9,21 @@ using namespace Sortings;
 typedef void (*f_t1)(int*, int); 		// function type1
 typedef void (*f_t2)(int*, int, int);   // function type2
 
+void TestsCall(int argc, char* argv[]); 
+void CheckInputs(int argc, char* argv[]); 
+	
+int main(int argc, char* argv[])
+{	
+	try {
+	CheckInputs(argc, argv);
+	TestsCall(argc, argv);
+	} catch (const char* msg) {
+		std::cout << msg << std::endl;
+	}
+
+	return 0;
+}
+
 void TestsCall(int argc, char* argv[]) {
 	int size = atoi(argv[1]);
 	int tests_count = atoi(argv[2]);	
@@ -37,23 +52,17 @@ void TestsCall(int argc, char* argv[]) {
 	delete[] array;
 }
 
-int main(int argc, char* argv[])
-{
+void CheckInputs(int argc, char* argv[]) {
 	if (3 != argc) {
-		std::cerr << "Error: Please, enter the size of array and tests count." << std::endl;
-		return -1;
+		throw "Error: Please, enter the size of array and tests count.";
 	}
 	
 	if (3 < atoi(argv[2]) || atoi(argv[2]) < 1) {
-		std::cerr << "Warning: The count of tests should be less than 4." << std::endl;
-		return -1;
+		throw "Warning: The count of tests should be less than 4.";
 	}
 
 	if (10000 < atoi(argv[1])) {
 		std::cout << "Please Wait ..." << std::endl;
 	}
-	
-	TestsCall(argc, argv);
-	
-	return 0;
 }
+
