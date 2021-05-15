@@ -30,9 +30,9 @@ void TestsCall(int argc, char* argv[]) {
 	int* array = RandomArrayGenerator(size);
 	
 	std::string function_name[] = { "BubbleSort   ", "InsertionSort", "SelectionSort",
-	"ShellSort    ", "HeapSort     ", "STLQuickSort ", "QuickSort    ", "MergeSort    " };
+	"ShellSort    ", "HeapSort     ", "RadixSort    ", "STLQuickSort ", "QuickSort    ", "MergeSort    " };
 	f_t1 array_of_sorts1[]={ BubbleSort, InsertionSort, SelectionSort,
-							ShellSort, HeapSort, STLQuickSort };	
+							ShellSort, HeapSort, RadixSort, STLQuickSort };	
 	f_t2 array_of_sorts2[] = { QuickSort , MergeSort }; 
 
 	if (2 <= tests_count) {

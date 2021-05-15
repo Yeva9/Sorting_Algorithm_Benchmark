@@ -1,5 +1,6 @@
 #include <cassert>
 #include <iostream>
+#include <queue>
 #include "Sortings.hpp"
 
 namespace 
@@ -197,3 +198,28 @@ namespace
 void Sortings::STLQuickSort(int*array, int size) {
 	qsort(array, size, sizeof(int), Compare);
 }
+
+namespace
+{
+    int Bit(int n, int k) {
+        return (n >> k) & 1;
+    }
+}
+
+void Sortings::RadixSort(int* array, int size) {
+    const int length = sizeof(int) * 8;
+    std::queue<int> Q[2];
+
+    for (int i = 0; i < length; ++i) {
+        for (int j = 0; j < size; ++j) {
+            Q[Bit(array[j], i)].push(array[j]);
+        }
+        for (int i = 0, j = 0; j < 2; ++j) {
+            while (!Q[j].empty()) {
+                array[i++] = Q[j].front();
+                Q[j].pop();
+            }
+        }
+    }
+}
+
