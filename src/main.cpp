@@ -25,6 +25,7 @@ int main(int argc, char* argv[])
 }
 
 void TestsCall(int argc, char* argv[]) {
+
 	int size = atoi(argv[1]);
 	int tests_count = atoi(argv[2]);	
 	int* array = RandomArrayGenerator(size);
